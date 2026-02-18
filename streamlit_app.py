@@ -2,8 +2,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 import requests
 
-# Link to your RAW html file on GitHub
-HTML_URL = <!DOCTYPE html>
+# Store the HTML/CSS inside a string variable using triple quotes """HTML_URL = <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
