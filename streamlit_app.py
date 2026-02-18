@@ -1,9 +1,7 @@
 import streamlit as st
-import streamlit.components.v1 as components
-import requests
 
-# Store the HTML/CSS inside a string variable using triple quotes """HTML_URL = <!DOCTYPE html>
-<!DOCTYPE html>
+# Use triple quotes """ to tell Python: "Everything inside here is just text"
+calculator_html = <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -41,21 +39,27 @@ r.innerHTML=t}
 function erf(x){const a1=0.254829592,a2=-0.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=0.3275911,s=(x<0)?-1:1;x=Math.abs(x);const t=1/(1+p*x),y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);return s*y}
 </script>
 </body>
-</html>
+</html>"""
+<style>
+    body {
+        font-family: sans-serif;
+        padding: 40px;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+    }
+    /* ... the rest of your CSS ... */
+</style>
 
-def main():
-    st.set_page_config(layout="wide")
-    
-    # Fetch the content
-    try:
-        response = requests.get(HTML_URL)
-        if response.status_code == 200:
-            # Render the HTML in an iframe
-            components.html(response.text, height=800, scrolling=True)
-        else:
-            st.error("Could not load the HTML file.")
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
+<div class="container">
+    <h1>Statistical Significance Calculator</h1>
+    <!-- ... the rest of your HTML ... -->
+</div>
 
-if __name__ == "__main__":
-    main()
+<script>
+    // ... any JavaScript you have ...
+</script>
+"""
+
+# This command actually renders the code onto the screen
+st.html(calculator_html)
