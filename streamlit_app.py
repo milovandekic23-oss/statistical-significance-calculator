@@ -1,13 +1,15 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
-# Use triple quotes """ to tell Python: "Everything inside here is just text"
-calculator_html = <!DOCTYPE html>
+# We store your entire HTML/CSS/JS inside a Python string variable
+calc_html = """
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Stats Checker</title>
 <style>
-body{font-family:sans-serif;padding:40px;background:#f0f2f5;display:flex;justify-content:center}
+body{font-family:sans-serif;padding:20px;background:#f0f2f5;display:flex;justify-content:center}
 .card{background:#fff;padding:30px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);width:350px}
 input{width:100%;padding:10px;margin:10px 0 20px 0;border:1px solid #ccc;border-radius:6px;box-sizing:border-box}
 button{width:100%;padding:12px;background:#007aff;color:#fff;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer}
@@ -39,27 +41,9 @@ r.innerHTML=t}
 function erf(x){const a1=0.254829592,a2=-0.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=0.3275911,s=(x<0)?-1:1;x=Math.abs(x);const t=1/(1+p*x),y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);return s*y}
 </script>
 </body>
-</html>"""
-<style>
-    body {
-        font-family: sans-serif;
-        padding: 40px;
-        background: #f0f2f5;
-        display: flex;
-        justify-content: center;
-    }
-    /* ... the rest of your CSS ... */
-</style>
-
-<div class="container">
-    <h1>Statistical Significance Calculator</h1>
-    <!-- ... the rest of your HTML ... -->
-</div>
-
-<script>
-    // ... any JavaScript you have ...
-</script>
+</html>
 """
 
-# This command actually renders the code onto the screen
-st.html(calculator_html)
+# Because your HTML contains a <script> (JavaScript), 
+# we use components.html to ensure it runs correctly in an iframe.
+components.html(calc_html, height=600)
